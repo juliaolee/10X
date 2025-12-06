@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+    <title>10X</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h6 class="header__subtitle">Enjoy your studying!</h6>
+        <h1 class="header__title">Our online courses</h1>
+      </header>
+      <nav class="filters">
+        <ul class="filters__list">
+          <li class="filters__item filters__item--active">All</li>
+          <li class="filters__item">Marketing</li>
+          <li class="filters__item">Management</li>
+          <li class="filters__item">HR & Recruiting</li>
+          <li class="filters__item">Design</li>
+          <li class="filters__item">Development</li>
+        </ul>
+        <div class="search">
+          <input
+            type="text"
+            class="search__input"
+            id="search-input"
+            placeholder="Search course..."
+          />
+          <span class="search__icon">
+            <img src="/assets/icons/search.svg" alt="search" />
+          </span>
+        </div>
+      </nav>
+      <main class="courses">
+        <div class="courses__grid" id="courses-grid"></div>
+        <button class="courses__load-more" id="load-more">
+          <span class="courses__icon">
+            <img src="/assets/icons/Convert.svg" alt="convert" /></span
+          >Load more
+        </button>
+      </main>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
