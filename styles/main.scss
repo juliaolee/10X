@@ -52,11 +52,11 @@ body {
 
 .header {
   text-align: center;
-  padding: 24px 40px 85px 0;
+  padding: 22px 40px 85px 0;
 
   &__subtitle {
     line-height: 150%;
-    margin-bottom: 8px;
+    margin-bottom: 9px;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
@@ -75,6 +75,40 @@ body {
     display: flex;
     list-style: none;
     gap: 12px;
+    transition: transform 0.3s ease;
+  }
+  &__btn {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: none;
+    position: relative;
+    z-index: 111;
+
+    span {
+      height: 2px;
+      width: 100%;
+      background-color: $text-grey;
+      transition: all 0.3s ease;
+    }
+
+    &--active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
   }
 
   &__item {
@@ -91,6 +125,10 @@ body {
       border-radius: 4px;
     }
   }
+
+  &__list--active {
+    transform: translateY(0) !important;
+  }
 }
 .filter-count {
   font-size: 10px;
@@ -104,10 +142,11 @@ body {
 
   &__input {
     width: 100%;
-    padding: 11px 122px 12px 16px;
+    padding: 11px 40px 12px 16px;
     border: 1px solid #d7dadd;
     border-radius: 4px;
     line-height: 150%;
+    transition: width 0.3s ease, opacity 0.3s ease;
   }
 
   &__icon {
@@ -115,6 +154,14 @@ body {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  &--active &__input {
+    width: 100%;
+    opacity: 1;
+    display: block;
   }
 }
 
@@ -162,8 +209,9 @@ body {
     @include flex-center;
 
     img {
-      width: 390px;
-      height: 240px;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 390/240;
     }
   }
   &__details {
@@ -225,15 +273,30 @@ body {
     line-height: 150%;
   }
 }
+
 @media (max-width: 1190px) {
   .search {
     &__input {
       padding: 11px 35px 12px 16px;
     }
   }
+
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .courses__grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    max-width: none;
+  }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1125px) {
   .header {
     padding: 24px 30px 40px 0;
 
@@ -249,27 +312,27 @@ body {
     min-width: auto;
 
     &__input {
+      width: 0;
       opacity: 0;
-      padding: 11px 20px 12px 16px;
+      padding: 11px 40px 12px 16px;
       display: none;
+      transition: width 0.3s ease, opacity 0.3s ease;
     }
 
     &__icon {
-      position: absolute;
-      right: 50px;
-      position: static;
-      transform: none;
       cursor: pointer;
     }
 
     &--active {
-      .search__input {
+      width: 100%;
+
+      &__input {
         display: block;
         opacity: 1;
-        width: 150px;
+        width: 100%;
       }
 
-      .search__icon {
+      &__icon {
         position: absolute;
         right: 16px;
         top: 50%;
@@ -290,6 +353,106 @@ body {
     }
   }
   .filters {
-    font-size: 15px;
+    font-size: 14px;
+    justify-content: flex-start;
+    position: relative;
+
+    &__btn {
+      display: flex;
+      margin-right: 15px;
+    }
+    &__list {
+      background-color: rgb(255, 255, 255, 1);
+      position: absolute;
+      z-index: 110;
+      flex-direction: column;
+      left: 0;
+      right: 0;
+      top: 45px;
+      bottom: 0;
+      align-items: flex-start;
+      height: 38vh;
+      padding: 20px 44px;
+      transform: translateY(-200%);
+      transition: transform 0.3s ease;
+      box-shadow: 0px 5px 5px rgba(102, 102, 102, 0.1);
+      &--active {
+        transform: translateY(0);
+      }
+    }
+
+    &__item {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  .search {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .header {
+    padding: 20px 0 30px 0;
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__subtitle {
+      font-size: 12px;
+    }
+  }
+
+  .filters {
+    margin-bottom: 40px;
+    &__list {
+      padding: 20px 30px;
+    }
+  }
+
+  .courses__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .courses__load-more {
+    margin: 50px auto;
+    font-size: 14px;
+  }
+
+  .card {
+    &__info {
+      padding: 16px;
+    }
+
+    &__title {
+      font-size: 18px;
+      margin: 15px 0;
+    }
+
+    &__category {
+      font-size: 12px;
+    }
+
+    &__price,
+    &__author {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 0 5px;
+  }
+
+  .search--active .search__input {
+    width: 100%;
   }
 }

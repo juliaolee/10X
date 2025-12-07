@@ -210,5 +210,11 @@ function toggleSearch() {
 mediaQuery.addEventListener("change", handleMediaChange);
 handleMediaChange(mediaQuery);
 
+const filtersBtn = document.querySelector(".filters__btn");
+filtersBtn.addEventListener("click", () => {
+  filtersList.classList.toggle("filters__list--active");
+  filtersBtn.classList.toggle("filters__btn--active");
+});
+
 // Initial render
 filterAndRender();
