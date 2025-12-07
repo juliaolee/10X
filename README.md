@@ -1,4 +1,5 @@
-
+# Note
+Во время верстки были исправлены опечатки, и с макетом получается небольшая разница, если делать наложение
 ##  How to Run
 
 Clone the repository: 
@@ -30,3 +31,4 @@ Watch SCSS for auto-compilation to CSS.
  - Add design elements
 
  - Refactoring
+
