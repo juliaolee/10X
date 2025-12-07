@@ -188,7 +188,7 @@ loadMoreBtn.addEventListener("click", () => {
 const searchContainer = document.querySelector(".search");
 const searchIcon = document.querySelector(".search__icon");
 
-const mediaQuery = window.matchMedia("(max-width: 1100px)");
+const mediaQuery = window.matchMedia("(max-width: 1125px)");
 
 function handleMediaChange(e) {
   if (e.matches) {
